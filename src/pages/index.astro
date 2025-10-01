@@ -1,12 +1,6 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// このセクションはAstroのスクリプト用です。今回は空のままで大丈夫です。
 ---
-
-<Layout>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -44,8 +38,8 @@ import Layout from '../layouts/Layout.astro';
         .section-title { font-size: 36px; text-align: center; margin-bottom: 60px; color: var(--main-color); }
 
         /* --- Header --- */
-        .header { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; position: fixed; width: 100%; background-color: rgba(255, 255, 255, 0.95); box-shadow: 0 2px 4px rgba(0,0,0,0.1); z-index: 100; box-sizing: border-box; }
-        .header-logo { font-size: 24px; font-weight: bold; color: var(--main-color); }
+        .header { display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; position: fixed; width: 100%; background-color: rgba(255, 255, 255, 0.95); box-shadow: 0 2px 4px rgba(0,0,0,0.1); z-index: 100; box-sizing: border-box; }
+        .header-logo img { height: 40px; width: auto; }
         .header-nav { display: none; } /* モバイルでは非表示 */
         .header-cta a { background-color: var(--accent-color); color: white; padding: 12px 24px; border-radius: 5px; font-weight: bold; transition: opacity 0.3s; }
         .header-cta a:hover { opacity: 0.8; }
@@ -57,7 +51,7 @@ import Layout from '../layouts/Layout.astro';
         }
 
         /* --- Hero (First View) --- */
-        .hero { background-color: var(--main-color); color: white; padding: 160px 0 120px; text-align: center; background-image: linear-gradient(rgba(0, 31, 63, 0.85), rgba(0, 31, 63, 0.85)), url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=2940&auto=format&fit=crop'); background-size: cover; background-position: center; background-attachment: fixed; }
+        .hero { background-color: var(--main-color); color: white; padding: 160px 0 120px; text-align: center; background-image: linear-gradient(rgba(0, 31, 63, 0.85), rgba(0, 31, 63, 0.85)), url('/hero-background.jpg'); background-size: cover; background-position: center; background-attachment: fixed; }
         .hero-catchphrase { color: #ffffff; /* 文字色を白に明示的に設定 */ font-size: 32px; font-weight: bold; line-height: 1.4; text-shadow: 0px 2px 8px rgba(0,0,0,0.7); /* 影を強くして視認性を向上 */ }
         .hero-subtitle { color: #ffffff; text-shadow: 0px 1px 6px rgba(0,0,0,0.9); font-size: 16px; margin: 20px 0 40px; }
         
@@ -201,7 +195,8 @@ import Layout from '../layouts/Layout.astro';
         .footer { text-align: center; padding: 40px; background-color: var(--main-color); color: #ccc; }
         .footer p { font-size: 14px; }
         .footer a { color: #fff; text-decoration: underline; }
-        .footer-logo { font-size: 20px; font-weight: bold; color: #fff; margin-bottom: 15px; }
+        .footer-logo { margin-bottom: 15px; }
+        .footer-logo img { height: 50px; width: auto; }
 
         /* --- Desktop Responsive Styles --- */
         @media (min-width: 768px) {
@@ -235,7 +230,9 @@ import Layout from '../layouts/Layout.astro';
 <body>
 
     <header class="header">
-        <div class="header-logo">BRコンサルタント</div>
+        <div class="header-logo">
+            <img src="/br-consultant-logo.jpg" alt="BRコンサルタント ロゴ">
+        </div>
         <nav class="header-nav">
             <ul>
                 <li><a href="#problem">事業の課題</a></li>
@@ -276,7 +273,7 @@ import Layout from '../layouts/Layout.astro';
                 <div class="problem-grid">
                     <div class="problem-card">
                         <h3 class="problem-card-title">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width:24px; height:24px; margin-right:10px;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.311a12.06 12.06 0 00-4.5 0m3.75 2.311a12.06 12.06 0 01-4.5 0M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width:24px; height:24px; margin-right:10px;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.311a12.06 12.06 0 00-4.5 0m3.75 2.311a12.06 12.06 0 01-4.5 0M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                             SNS活用における課題
                         </h3>
                         <ul>
@@ -287,7 +284,7 @@ import Layout from '../layouts/Layout.astro';
                     </div>
                     <div class="problem-card">
                         <h3 class="problem-card-title">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 6.75z" /></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 6.75z"></path></svg>
                             営業リソースにおける課題
                         </h3>
                         <ul>
@@ -317,21 +314,21 @@ import Layout from '../layouts/Layout.astro';
                     <div class="service-points">
                         <div class="point-item">
                             <div class="point-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.82m5.84-2.56a16.5 16.5 0 01-2.08-1.52m-1.52-2.08a16.5 16.5 0 01-1.52-2.08m-2.08-1.52a16.5 16.5 0 01-1.52-2.08m-1.52-2.08a16.5 16.5 0 01-2.08-1.52M12 21a9 9 0 110-18 9 9 0 010 18z" /></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.82m5.84-2.56a16.5 16.5 0 01-2.08-1.52m-1.52-2.08a16.5 16.5 0 01-1.52-2.08m-2.08-1.52a16.5 16.5 0 01-1.52-2.08m-1.52-2.08a16.5 16.5 0 01-2.08-1.52M12 21a9 9 0 110-18 9 9 0 010 18z"></path></svg>
                             </div>
                             <h4>戦略的プロデュース</h4>
                             <p>SNS総フォロワー約70万・護身術ジャンル日本一の『リッキー』氏と提携。彼の「生きたノウハウ」と、私たちが持つマーケティングの戦略性を掛け合わせ、貴社に最適な専門チームを編成しプロジェクトを成功に導きます。</p>
                         </div>
                         <div class="point-item">
                             <div class="point-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.898 20.542L16.5 21.75l-.398-1.208a3.375 3.375 0 00-2.456-2.456L12.5 18l1.208-.398a3.375 3.375 0 002.456-2.456L16.5 14.25l.398 1.208a3.375 3.375 0 002.456 2.456L20.25 18l-1.208.398a3.375 3.375 0 00-2.456 2.456z" /></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.898 20.542L16.5 21.75l-.398-1.208a3.375 3.375 0 00-2.456-2.456L12.5 18l1.208-.398a3.375 3.375 0 002.456-2.456L16.5 14.25l.398 1.208a3.375 3.375 0 002.456 2.456L20.25 18l-1.208.398a3.375 3.375 0 00-2.456 2.456z"></path></svg>
                             </div>
                             <h4>手厚い二人三脚サポート</h4>
                             <p>アカウント設計から企画、撮影、編集までを一貫して代行可能。定例MTGや回数無制限のチャットサポートで、いつでも相談できる安心の環境を提供し、二人三脚でゴールを目指します。</p>
                         </div>
                         <div class="point-item">
                             <div class="point-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" /></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"></path></svg>
                             </div>
                             <h4>データに基づく改善</h4>
                             <p>投稿後の数値を徹底的に分析し、次回の企画へと反映。感覚論ではない、データに基づいた再現性の高いアカウント成長を実現します。</p>
@@ -555,7 +552,9 @@ import Layout from '../layouts/Layout.astro';
 
     <footer class="footer">
         <div class="container">
-            <div class="footer-logo">BRコンサルタント</div>
+            <div class="footer-logo">
+                <img src="/br-consultant-logo.jpg" alt="BRコンサルタント ロゴ">
+            </div>
             <p>&copy; 2025 BRコンサルタント運営事務局. All Rights Reserved.</p>
             <!-- <p><a href="#">プライバシーポリシー</a></p> -->
         </div>
@@ -563,4 +562,4 @@ import Layout from '../layouts/Layout.astro';
 
 </body>
 </html>
-</Layout>
+
