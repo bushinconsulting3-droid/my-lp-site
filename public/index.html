@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="東京都葛飾区・足立区を中心に外壁塗装、屋根塗装、防水工事、内装リフォームを行う西城建装。塗装歴10年以上の確かな技術と完全自社施工による適正価格で、戸建てからアパート・店舗まで対応いたします。お見積り・ご相談は無料です。">
+  <meta name="keywords" content="外壁塗装,屋根塗装,防水工事,リフォーム,葛飾区,足立区,西城建装,塗り替え,雨漏り修理">
   <title>西城建装 - 葛飾区・足立区の外壁塗装・防水・屋根・内装リフォーム</title>
   
   <link rel="icon" type="image/jpeg" href="ロゴ08_saijo.jpg">
@@ -12,6 +14,26 @@
   <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "西城建装",
+      "image": "ロゴ08_saijo.jpg",
+      "description": "東京都葛飾区・足立区を中心に外壁塗装、屋根塗装、防水工事、内装リフォームを行う施工業者。",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "東堀切2-1-8-レジデンスキミ303",
+        "addressLocality": "葛飾区",
+        "addressRegion": "東京都",
+        "postalCode": "124-0004",
+        "addressCountry": "JP"
+      },
+      "telephone": "080-1271-1113",
+      "areaServed": ["葛飾区", "足立区", "東京都", "千葉県", "埼玉県"]
+    }
+  </script>
 
   <style>
     html {
@@ -60,9 +82,43 @@
     const IconArrowRight = ({ className }) => <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>;
     const IconThumbsUp = ({ className }) => <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" /></svg>;
 
+    const FaqItem = ({ question, answer }) => {
+      const [isOpen, setIsOpen] = useState(false);
+      return (
+        <div className="border border-gray-200 rounded-2xl mb-4 overflow-hidden bg-white shadow-sm hover:shadow transition-shadow">
+          <button 
+            onClick={() => setIsOpen(!isOpen)} 
+            className="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none hover:bg-gray-50 transition-colors"
+          >
+            <span className="font-bold text-gray-900 flex items-start text-sm md:text-base leading-relaxed">
+              <span className="text-blue-600 mr-3 text-lg leading-none mt-0.5 font-black">Q.</span>
+              {question}
+            </span>
+            <svg className={`h-5 w-5 text-gray-400 flex-shrink-0 transform transition-transform duration-300 ml-4 ${isOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div className={`px-6 overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-96 pb-5 opacity-100' : 'max-h-0 opacity-0'}`}>
+            <div className="pt-4 border-t border-gray-100">
+              <p className="text-gray-600 font-medium flex items-start text-sm md:text-base leading-relaxed">
+                <span className="text-orange-500 mr-3 text-lg leading-none font-black mt-0.5">A.</span>
+                {answer}
+              </p>
+            </div>
+          </div>
+        </div>
+      );
+    };
+
     function App() {
       const [isMenuOpen, setIsMenuOpen] = useState(false);
       const [isScrolled, setIsScrolled] = useState(false);
+
+      const navItems = [
+        { label: '選ばれる理由', id: 'features' },
+        { label: '事業内容', id: 'services' },
+        { label: '代表挨拶', id: 'about' },
+        { label: 'よくある質問', id: 'faq' },
+        { label: '対応エリア', id: 'area' }
+      ];
 
       useEffect(() => {
         const handleScroll = () => {
@@ -115,17 +171,17 @@
                 </div>
                 
                 <nav className="hidden lg:flex space-x-1 xl:space-x-2">
-                  {['選ばれる理由', '事業内容', '代表挨拶', '対応エリア'].map((item, idx) => (
-                    <button key={idx} onClick={() => scrollToSection(['features', 'services', 'about', 'area'][idx])} className="px-4 py-2 rounded-full text-gray-600 hover:text-blue-600 hover:bg-blue-50 font-medium transition-all text-sm xl:text-base">
-                      {item}
+                  {navItems.map((item, idx) => (
+                    <button key={idx} onClick={() => scrollToSection(item.id)} className="px-3 py-2 rounded-full text-gray-600 hover:text-blue-600 hover:bg-blue-50 font-medium transition-all text-sm">
+                      {item.label}
                     </button>
                   ))}
                 </nav>
 
                 <div className="hidden md:flex items-center space-x-3 xl:space-x-4">
-                  <div className="flex flex-col items-end mr-2">
-                    <span className="text-[10px] font-bold text-orange-600 bg-orange-100 px-2 py-0.5 rounded-full mb-0.5 border border-orange-200">お見積り・相談無料</span>
-                    <span className="text-lg xl:text-xl font-extrabold text-gray-900 flex items-center tracking-wider"><IconPhone className="h-4 w-4 mr-1.5 text-blue-600" /> 080-1271-1113</span>
+                  <div className="flex flex-col items-end mr-1 lg:mr-2">
+                    <span className="text-[10px] font-bold text-orange-600 bg-orange-100 px-2 py-0.5 rounded-full mb-0.5 border border-orange-200">お見積り無料</span>
+                    <span className="text-base lg:text-lg xl:text-xl font-extrabold text-gray-900 flex items-center tracking-wider"><IconPhone className="h-4 w-4 mr-1.5 text-blue-600" /> 080-1271-1113</span>
                   </div>
                   <a href="https://line.me/ti/p/~2525aiki" target="_blank" rel="noopener noreferrer" className="bg-gradient-to-r from-[#06C755] to-[#05b34c] text-white p-2.5 rounded-full hover:shadow-[0_4px_12px_rgba(6,199,85,0.4)] transition-all transform hover:-translate-y-0.5" title="LINEで相談">
                     <IconMessage className="h-5 w-5" />
@@ -146,9 +202,9 @@
             {isMenuOpen && (
               <div className="md:hidden bg-white/95 backdrop-blur-xl border-t border-gray-100 shadow-2xl absolute w-full">
                 <div className="px-4 pt-4 pb-8 space-y-3">
-                  {['選ばれる理由', '事業内容', '代表挨拶', '対応エリア'].map((item, idx) => (
-                    <button key={idx} onClick={() => scrollToSection(['features', 'services', 'about', 'area'][idx])} className="block w-full text-left px-4 py-3.5 text-base font-bold text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-xl transition-colors">
-                      {item}
+                  {navItems.map((item, idx) => (
+                    <button key={idx} onClick={() => scrollToSection(item.id)} className="block w-full text-left px-4 py-3.5 text-base font-bold text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-xl transition-colors">
+                      {item.label}
                     </button>
                   ))}
                   <div className="mt-6 pt-6 border-t border-gray-100">
@@ -181,7 +237,7 @@
                   className="w-full h-full object-cover animate-slow-zoom opacity-80"
                 />
               </div>
-              <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col items-center mt-16">
+              <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col items-center mt-12 md:mt-0">
                 <div className="inline-flex items-center backdrop-blur-md bg-white/10 border border-white/20 text-white font-bold px-6 py-2.5 rounded-full text-sm md:text-base mb-8 shadow-2xl tracking-widest">
                   <span className="w-2.5 h-2.5 rounded-full bg-blue-400 mr-3 animate-pulse shadow-[0_0_10px_rgba(96,165,250,0.8)]"></span>
                   塗装歴10年以上・自社施工で高品質
@@ -201,7 +257,7 @@
                   確かな技術と柔軟なフットワークで、住まいの悩みを解決します。
                 </p>
                 
-                <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 w-full max-w-2xl justify-center">
+                <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 w-full max-w-2xl justify-center mb-24 md:mb-16">
                   <button onClick={() => scrollToSection('contact')} className="group bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-400 hover:to-orange-500 text-white px-8 py-4.5 rounded-full text-lg font-bold flex items-center justify-center transition-all duration-300 transform hover:-translate-y-1 shadow-[0_10px_30px_rgba(249,115,22,0.5)] w-full sm:w-auto border border-orange-400/50">
                     <IconPhone className="mr-2 h-6 w-6 group-hover:scale-110 transition-transform" /> 無料見積り・相談
                   </button>
@@ -212,9 +268,9 @@
                 </div>
               </div>
 
-              <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20 flex flex-col items-center animate-bounce hidden md:flex cursor-pointer" onClick={() => scrollToSection('features')}>
-                <span className="text-white/60 text-xs font-bold tracking-widest mb-2">SCROLL</span>
-                <div className="w-0.5 h-12 bg-gradient-to-b from-white/60 to-transparent"></div>
+              <div className="absolute bottom-6 md:bottom-10 left-1/2 transform -translate-x-1/2 z-20 flex flex-col items-center animate-bounce hidden md:flex cursor-pointer" onClick={() => scrollToSection('features')}>
+                <span className="text-white/60 text-xs font-bold tracking-widest mb-2 drop-shadow-md">SCROLL</span>
+                <div className="w-0.5 h-10 md:h-12 bg-gradient-to-b from-white/60 to-transparent"></div>
               </div>
             </section>
 
@@ -239,17 +295,17 @@
                     {
                       icon: IconShield,
                       title: "塗装歴10年以上の技術と<br />4名体制の機動力",
-                      desc: "外壁塗装・屋根塗装業界で10年以上の経験を持つ代表をはじめ、技術と経験を兼ね備えた4名の職人チームで稼働しています。若さを活かした柔軟なフットワークで、葛飾区・足立区における質の高い施工と迅速な対応を実現します。"
+                      desc: "外壁塗装・屋根塗装業界で10年以上の経験を持つ代表をはじめ、技術と経験を兼ね備えた職人チームで稼働しています。若さを活かした柔軟なフットワークで、葛飾区・足立区における質の高い施工と迅速な対応を実現します。"
                     },
                     {
                       icon: IconMapPin,
                       title: "葛飾・足立を中心とした<br />広域エリア対応",
-                      desc: "東京都葛飾区・足立区を拠点としながら、東京都全域、千葉県、埼玉県、神奈川県まで幅広く対応しています。戸建ての外壁塗り替えだけでなく、マンション、アパート、店舗の防水修繕や屋根工事も承ります。"
+                      desc: "東京都葛飾区・足立区を拠点としながら、東京都全域、千葉県、埼玉県など近郊エリアまで幅広く対応しています。戸建ての外壁塗り替えだけでなく、マンション、アパート、店舗の防水工事や屋根修理も承ります。"
                     },
                     {
                       icon: IconThumbsUp,
                       title: "自社一貫施工と<br />「3つの約束」",
-                      desc: "職人が直接打ち合わせに伺う完全自社施工により、中間マージンをカットした適正価格でご提供します。さらに「最善の提案」「自分の家を塗るような丁寧な施工」「安心のアフターフォロー」の3つをお客様にお約束します。"
+                      desc: "職人が直接打ち合わせに伺う完全自社施工により、中間マージンをカットした適正価格でご提供します。さらに「最善の提案」「自分の家を塗るような丁寧な施工」「安心のアフターフォロー」をお客様にお約束します。"
                     }
                   ].map((feature, idx) => (
                     <div key={idx} className="bg-white rounded-3xl p-8 lg:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 relative mt-12 md:mt-0 group hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] hover:border-blue-100 transition-all duration-300 transform hover:-translate-y-2">
@@ -274,11 +330,11 @@
                     SERVICES
                   </div>
                   <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 mb-8 tracking-tight">
-                    事業内容
+                    外壁塗装・防水・屋根工事等の<br className="md:hidden" />事業内容
                   </h2>
                   <div className="w-24 h-1.5 bg-gradient-to-r from-blue-600 to-cyan-400 mx-auto rounded-full shadow-sm mb-8"></div>
                   <p className="text-gray-600 max-w-2xl mx-auto text-base md:text-lg leading-relaxed font-medium">
-                    外壁や屋根などの外装工事全般から、室内の塗装・防水工事まで幅広く対応いたします。<br className="hidden md:block" />
+                    葛飾区・足立区周辺の気候や環境に適した外装工事全般から、室内の内装塗装・防水工事まで幅広く対応いたします。<br className="hidden md:block" />
                     付帯物のちょっとした塗装など、小さな工事もお気軽にご相談ください。
                   </p>
                 </div>
@@ -286,11 +342,11 @@
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
                   {[
                     { icon: IconPaint, title: "外壁塗装・塗り替え工事", problem: "色あせ、ひび割れ、チョーキング", desc: "紫外線や雨風による劣化を防ぎ、建物の寿命を延ばします。高圧洗浄や丁寧な下地処理を行い、最適な外壁塗料で仕上げます。葛飾区や足立区の戸建てからアパート・マンションまで対応可能です。" },
-                    { icon: IconHome, title: "内装塗装工事", problem: "壁の黒ずみ、タバコのヤニ、部屋を明るくしたい", desc: "室内の壁や天井、建具などの塗装を行います。クロス張替えでは表現できない質感や色合いで空間の雰囲気を変えます。店舗の内装塗装についてもご相談ください。" },
+                    { icon: IconHome, title: "内装塗装工事", problem: "壁の黒ずみ、タバコのヤニ、部屋を明るくしたい", desc: "室内の壁や天井、建具などの塗装を行います。クロス張替えでは表現できない質感や色合いで空間の雰囲気を変えます。店舗の内装リフォーム・塗装についてもご相談ください。" },
                     { icon: IconDrop, title: "防水工事・雨漏り対策", problem: "雨漏りの不安、ベランダの水たまり", desc: "ベランダや屋上からの漏水を防ぎます。劣化状況に応じた適切な防水処理（ウレタン防水など）を実施し、建物の内部腐食を引き起こす雨漏りを根本から防ぎます。" },
-                    { icon: IconTool, title: "シーリング（コーキング）", problem: "外壁の目地の割れ、サッシ周りの隙間", desc: "外壁材の隙間や窓サッシ周りを埋めるシーリング（コーキング）の打ち替えを実施し、建物の気密性と防水性を高めます。外壁塗装とセットでの施工がおすすめです。" },
-                    { icon: IconHome, title: "屋根工事・屋根塗装", problem: "屋根の色落ち、コケ・カビ、瓦のズレ", desc: "屋根の塗装、漆喰補修、カバー工法などによる屋根の修繕を行います。見えにくい部分だからこそ、丁寧な診断と雨漏りが発生する前の適切なメンテナンスを提供します。" },
-                    { icon: IconCheck, title: "リフォーム工事全般", problem: "建物の老朽化、外装リフォームを一括で頼みたい", desc: "外装に関わる工事全般を得意とし、住宅の修繕や改修に対応します。塗装や防水だけでなく、住まいに関する悩みを一括して解決できる体制を整えています。複数業者を手配するお客様の手間を省き、窓口を一本化します。" }
+                    { icon: IconTool, title: "シーリング（コーキング）", problem: "外壁の目地の割れ、サッシ周りの隙間", desc: "外壁材の隙間や窓サッシ周りを埋めるシーリング（コーキング）の打ち替えを実施し、建物の気密性と防水性を高めます。外壁塗装とセットでの施工がメンテナンスとしておすすめです。" },
+                    { icon: IconHome, title: "屋根工事・屋根塗装", problem: "屋根の色落ち、コケ・カビ、瓦のズレ", desc: "屋根の塗装、漆喰補修、カバー工法などによる屋根の修繕を行います。見えにくい部分だからこそ、丁寧な診断と雨漏りが発生する前の適切な屋根メンテナンスを提供します。" },
+                    { icon: IconCheck, title: "リフォーム工事全般", problem: "建物の老朽化、外装リフォームを一括で頼みたい", desc: "外装に関わる工事全般を得意とし、住宅の修繕や改修に対応します。塗装や防水だけでなく、住まいに関する悩みを一括して解決できる体制を整えています。複数業者を手配するお客様の手間を省きます。" }
                   ].map((service, idx) => (
                     <div key={idx} className="bg-white p-8 lg:p-10 rounded-3xl shadow-[0_4px_20px_rgb(0,0,0,0.03)] border border-gray-100 flex flex-col h-full group hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] hover:border-blue-100 transition-all duration-300 transform hover:-translate-y-2">
                       <div className="bg-gradient-to-br from-blue-50 to-blue-100 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-blue-600 transition-all duration-300 shadow-inner">
@@ -357,6 +413,39 @@
                       </p>
                     </div>
                   </div>
+                </div>
+              </div>
+            </section>
+
+            <section id="faq" className="py-24 bg-white border-t border-gray-100">
+              <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="text-center mb-16">
+                  <div className="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-blue-100 text-blue-700 font-bold tracking-widest text-xs mb-6 shadow-sm border border-blue-200">
+                    FAQ
+                  </div>
+                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 mb-8 tracking-tight">
+                    外装工事に関するよくある質問
+                  </h2>
+                  <div className="w-24 h-1.5 bg-gradient-to-r from-blue-600 to-cyan-400 mx-auto rounded-full shadow-sm mb-8"></div>
+                </div>
+
+                <div className="space-y-4">
+                  <FaqItem 
+                    question="葛飾区・足立区以外のエリアでも見積もりは無料ですか？"
+                    answer="はい、東京都内全域をはじめ、近隣の千葉県・埼玉県でも無料で現地調査・お見積りを行っております。地域密着を心がけつつ、フットワーク軽く対応いたしますのでお気軽にご相談ください。"
+                  />
+                  <FaqItem 
+                    question="外壁塗装や屋根塗装の最適な時期・目安はいつですか？"
+                    answer="一般的に築10年〜15年が塗り替えの目安と言われています。外壁を触って白い粉が付く（チョーキング）、ひび割れ（クラック）がある、コーキングが割れている等の症状が見られたら、建物の劣化を防ぐためにお早めの現地調査をおすすめします。"
+                  />
+                  <FaqItem 
+                    question="工事期間中、普段通りに生活することはできますか？"
+                    answer="はい、普段通り生活していただけます。外装工事のため室内に立ち入ることは基本的にはございません。ただし、足場やメッシュシートの設置により日当たりが悪くなる場合や、塗料の臭いが発生する工程がございます。事前にお客様や近隣の方へご説明と配慮を徹底いたします。"
+                  />
+                  <FaqItem 
+                    question="他社で見積もりを取っていますが、相見積もりでも大丈夫ですか？"
+                    answer="もちろん大丈夫です。外壁塗装や屋根リフォームは高額な工事となるため、複数社で比較検討されることをおすすめしています。西城建装では完全自社施工による適正価格と施工内容でご提案させていただきます。"
+                  />
                 </div>
               </div>
             </section>
@@ -490,10 +579,9 @@
                       営業時間: 8:00 - 18:00
                     </div>
                     <div className="flex flex-wrap md:justify-end gap-x-6 gap-y-3 text-sm font-bold text-gray-500 mt-2">
-                      <button onClick={() => scrollToSection('features')} className="hover:text-white transition-colors">選ばれる理由</button>
-                      <button onClick={() => scrollToSection('services')} className="hover:text-white transition-colors">事業内容</button>
-                      <button onClick={() => scrollToSection('about')} className="hover:text-white transition-colors">代表挨拶</button>
-                      <button onClick={() => scrollToSection('area')} className="hover:text-white transition-colors">対応エリア</button>
+                      {navItems.map((item, idx) => (
+                        <button key={idx} onClick={() => scrollToSection(item.id)} className="hover:text-white transition-colors">{item.label}</button>
+                      ))}
                     </div>
                   </div>
                   <p className="text-xs mt-12 text-gray-600 font-bold tracking-widest">
